@@ -1,0 +1,91 @@
+function y = fcn(u,v)
+  if  (u <= v && v >= u)
+      y = 0;
+  else
+      y = 1;
+  end
+end
+
+
+
+
+
+function y = fcn(u,v)
+if(u <= v && v >= u)
+    y = 0;
+else
+    y = 1;
+end
+
+
+
+function y = fcn(u, v)
+    if u == v
+        y = 0;
+    else
+        y = 1;
+    end
+end
+
+
+
+function y = fcn(u, v)
+    % Check if u and v are equal
+    if u == v
+        y = 0;
+    else
+        % Determine the lower and higher values
+        lower_val = min(u, v);
+        higher_val = max(u, v);
+        
+        % Increment the higher value and decrement the lower value until they are equal
+        while lower_val ~= higher_val
+            lower_val = lower_val - 1;
+            higher_val = higher_val + 1;
+        end
+        
+        % Set the output y to 1
+        y = 1;
+    end
+end
+
+
+
+function y = activeCellBalancing(u, v)
+    % Initialize the output variable 'y'
+    y = 1;
+
+    % Main active cell balancing loop
+    while u ~= v
+        % Determine the lower and higher voltage cells
+        if u < v
+            lowerCell = u;
+            higherCell = v;
+        else
+            lowerCell = v;
+            higherCell = u;
+        end
+
+        % Adjust the lower and higher cells to balance them
+        lowerCell = lowerCell + 1;
+        higherCell = higherCell - 1;
+
+        % Update the input voltages 'u' and 'v'
+        u = lowerCell;
+        v = higherCell;
+
+        % Display the current values of 'u' and 'v' (optional)
+        fprintf("u = %d, v = %d\n", u, v);
+
+        % Set 'y' to 1 to indicate that balancing is still ongoing
+        y = 1;
+
+        % Add a pause (optional) to visualize the balancing process
+        % pause(0.5);
+    end
+
+    % Set 'y' to 0 to indicate that balancing is complete
+    y = 0;
+end
+
+
